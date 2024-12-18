@@ -53,7 +53,7 @@ jobs:
         PR="${{ github.event.pull_request.body }}"
         echo $PR | grep -oP '\(backport #\K\d+' | tail -n 1)
         author=$(gh pr view ${ORI_PR} -R ${REPO} --json author -q '.author.login')
-        if [[ ! "${author}" =~ "mergify" ]]; then
+        if [[ ! "${author}" =~ "morielp-jfrog" ]]; then
           gh pr edit ${PR_NUMBER} -R ${REPO} --add-assignee ${author} || true
           echo "ORI_PR=${ORI_PR}" >> $GITHUB_OUTPUT
         fi
